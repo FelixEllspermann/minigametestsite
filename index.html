@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="grid-container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.grid-container');
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        
+            for (let i = 0; i < 400; i++) {
+                const gridItem = document.createElement('div');
+                gridItem.classList.add('grid-item');
+                gridItem.textContent = getRandomLetter();
+                container.appendChild(gridItem);
+            }
+        
+            function getRandomLetter() {
+                const index = Math.floor(Math.random() * alphabet.length);
+                return alphabet[index];
+            }
+        
+            container.addEventListener('click', function(e) {
+                if (e.target.classList.contains('grid-item')) {
+                    e.target.classList.toggle('selected');
+                }
+            });
+        
+            container.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                if (e.target.classList.contains('grid-item')) {
+                    e.target.classList.remove('selected');
+                }
+            });
+        });
+    </script>
+        
+        
+            
+        
+</body>
+</html>
